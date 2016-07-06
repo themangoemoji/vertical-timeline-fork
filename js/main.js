@@ -71,6 +71,7 @@ app.controller('mainCtrl', function($scope, $http) {
         var date        = entry_array[entry].gsx$date.$t;
         var time        = entry_array[entry].gsx$time.$t;
         var icon        = entry_array[entry].gsx$icon.$t;
+        var dot_color   = entry_array[entry].gsx$dotcolor.$t;
 
         // Replace icon spaces with underscores
         var icon        = icon.replace(/ /g,"_");
@@ -81,10 +82,16 @@ app.controller('mainCtrl', function($scope, $http) {
             datetime += " at " + time ;
           }
 
-        console.log(entry_array[entry]);
-        // Push elements to JS array for angular to use
-        $scope.events.push({"title":title, "description":description, "datetime":datetime, "icon":icon});
+        //console.log(entry_array[entry]);
 
+        // Push elements to JS array for angular to use
+        $scope.events.push({
+          "title":title,
+          "description":description,
+          "datetime":datetime,
+          "icon":icon,
+          "dot_color":dot_color
+        });
 
         $scope.render = function(time) {
           return condition ? "This is rendered when condition == TRUE" : "This is rendered when condition == FALSE";
@@ -95,7 +102,9 @@ app.controller('mainCtrl', function($scope, $http) {
 
     }) /*end of getJSON function */
 
-    console.log($scope.events);
+    //console.log($scope.events);
   }
+
+  //define dot colors
 
 });

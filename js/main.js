@@ -1,9 +1,5 @@
 jQuery(document).ready(function($){
 
-
-
-
-
   var timelineBlocks = $('.cd-timeline-block'),
   offset = 0.8;
 
@@ -29,8 +25,6 @@ jQuery(document).ready(function($){
     });
   }
 });
-
-
 
 var app = angular.module('myModule', []);
 
@@ -68,7 +62,7 @@ app.controller('mainCtrl', function($scope, $http) {
         // Grab elements from JSON
         var description = entry_array[entry].gsx$description.$t;
         var title       = entry_array[entry].gsx$title.$t;
-        var date        = entry_array[entry].gsx$date.$t;
+        var date        = entry_array[entry].gsx$date.$t.split(",");
         var time        = entry_array[entry].gsx$time.$t;
         var icon        = entry_array[entry].gsx$icon.$t;
         var dot_color   = entry_array[entry].gsx$dotcolor.$t;
@@ -77,12 +71,22 @@ app.controller('mainCtrl', function($scope, $http) {
         var icon        = icon.replace(/ /g,"_");
 
         // Make datetime variable from concatnated date + time if time is listed
-        var datetime = date
+        var datetime = date[0];
           if (time != "") {
             datetime += " at " + time ;
           }
 
-        //console.log(entry_array[entry]);
+        var curDate = new Date();
+        var eventDate = new Date(date[0] + date[1]);
+
+        console.log(entry_array[entry]);
+
+        // Push elements to JS array for angular to use
+
+        if (curDate < eventDate)
+        {
+          $scope.events.push({"title":title, "description":description, "datetime":datetime});
+        }
 
         // Push elements to JS array for angular to use
         $scope.events.push({

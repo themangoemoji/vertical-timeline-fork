@@ -68,6 +68,10 @@ app.controller('mainCtrl', function($scope, $http) {
         var title       = entry_array[entry].gsx$title.$t;
         var date        = entry_array[entry].gsx$date.$t.split(",");
         var time        = entry_array[entry].gsx$time.$t;
+        var icon        = entry_array[entry].gsx$icon.$t;
+
+        // Replace icon spaces with underscores
+        var icon        = icon.replace(/ /g,"_");
 
         // Make datetime variable from concatnated date + time if time is listed
         var datetime = date[0];
@@ -87,6 +91,7 @@ app.controller('mainCtrl', function($scope, $http) {
         {
           $scope.events.push({"title":title, "description":description, "datetime":datetime});
         }
+
 
 
 

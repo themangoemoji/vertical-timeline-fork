@@ -5,12 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <link href='http://fonts.googleapis.com/css?family=Droid+Serif|Open+Sans:400,700' rel='stylesheet' type='text/css'>
-
     <link rel="stylesheet" href="css/reset.css"> <!-- CSS reset -->
     <link rel="stylesheet" href="css/style.css"> <!-- Resource style -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
     <script src="js/modernizr.js"></script> <!-- Modernizr -->
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js"></script> <!-- Resource jQuery -->
-    <script   src="https://code.jquery.com/jquery-2.2.4.min.js"   integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="   crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
     <script src="js/main.js"></script> <!-- Resource jQuery -->
 
     <title>Responsive Vertical Timeline</title>
@@ -25,7 +26,8 @@
     <section id="cd-timeline" class="cd-container">
       <div ng-cloak ng-repeat="event in events track by $index" class="cd-timeline-block">
         <div class="cd-timeline-img cd-picture">
-          <img src="img/cd-icon-picture.svg" alt="Picture">
+          <!--<img src="img/cd-icon-picture.svg" alt="Picture">-->
+          <i class="material-icons md-32">{{ event.icon }}</i>
         </div> <!-- cd-timeline-img -->
 
         <div class="cd-timeline-content">

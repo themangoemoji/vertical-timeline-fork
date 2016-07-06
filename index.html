@@ -9,23 +9,18 @@
     <link rel="stylesheet" href="css/reset.css"> <!-- CSS reset -->
     <link rel="stylesheet" href="css/style.css"> <!-- Resource style -->
     <script src="js/modernizr.js"></script> <!-- Modernizr -->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js"></script> <!-- Resource jQuery -->
+    <script   src="https://code.jquery.com/jquery-2.2.4.min.js"   integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="   crossorigin="anonymous"></script>
+    <script src="js/main.js"></script> <!-- Resource jQuery -->
 
     <title>Responsive Vertical Timeline</title>
   </head>
-  <body ng-app="myModule" ng-controller="mainCtrl as main">
+
+  <body ng-app="myModule" ng-controller="mainCtrl as main" ng-init="getSpreadsheetData()">
+
     <header>
       <h1>Responsive Vertical Timeline</h1>
     </header>
-
-
-    <!--start angular app-->
-    <!--
-      -  <ul>
-      -  <li ng-cloak ng-repeat="event in events track by $index">
-      -    {{event.title}}
-      -  </li>
-      -</ul>
-    -->
 
     <section id="cd-timeline" class="cd-container">
       <div ng-cloak ng-repeat="event in events track by $index" class="cd-timeline-block">
@@ -39,23 +34,23 @@
           <a href="#0" class="cd-read-more">Read more</a>
 
 
-          <div class="modal">
+          <!--<div class="modal">-->
 
-            <label for="modal-1">
-              <div class="modal-trigger">Click for Modal</div>
-            </label>
+            <!--<label for="modal-1">-->
+              <!--<div class="modal-trigger">Click for Modal</div>-->
+            <!--</label>-->
 
-            <input class="modal-state" id="modal-1" type="checkbox" />
+            <!--<input class="modal-state" id="modal-1" type="checkbox" />-->
 
-            <div class="modal-fade-screen">
-              <div class="modal-inner">
-                <div class="modal-close" for="modal-1"></div>
-                <h1>Modal Title</h1>
-                <p class="modal-intro">{{event.title}}</p>
-                <p class="modal-content">{{event.description}}</p>
-              </div> <!--modal-inner-->
-            </div> <!--modal-fade-screen-->
-          </div> <!--modal-->
+            <!--<div class="modal-fade-screen">-->
+              <!--<div class="modal-inner">-->
+                <!--<div class="modal-close" for="modal-1"></div>-->
+                <!--<h1>Modal Title</h1>-->
+                <!--<p class="modal-intro">{{event.title}}</p>-->
+                <!--<p class="modal-content">{{event.description}}</p>-->
+              <!--</div> [>modal-inner<]-->
+            <!--</div> [>modal-fade-screen<]-->
+          <!--</div> [>modal<]-->
 
 
           <span class="cd-date">Jan 14</span>
@@ -63,6 +58,5 @@
       </div> <!-- cd-timeline-block -->
 
     </section> <!-- cd-timeline -->
-    <script src="js/main.js"></script> <!-- Resource jQuery -->
   </body>
 </html>

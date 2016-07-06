@@ -1,10 +1,8 @@
-var $ = require('jQuery');
-
 jQuery(document).ready(function($){
 
-  console.log("jQuery ready");
 
-  //console.log("Users JSON: ", $users[1].dogs[0].name);
+
+
 
   var timelineBlocks = $('.cd-timeline-block'),
   offset = 0.8;
@@ -32,12 +30,55 @@ jQuery(document).ready(function($){
   }
 });
 
+
+
 var app = angular.module('myModule', []);
 
-app.controller('mainCtrl', function($scope) {
+app.controller('mainCtrl', function($scope, $http) {
   $scope.events = [
-    {'title':'Application Deadline', 'description':'Complete the online application by today or you will likely die'},
-    {'title':'1st Round Interviews', 'description':'Plead with Sam and Brad for a spot it will work'},
-    {'title':'Second Round Interviews', 'description':'Roll on the ground and ask for a job trust me'}
+    //{'title':'Application Deadline', 'description':'Complete the online application by today or you will likely die'},
+    //{'title':'0st Round Interviews', 'description':'Plead with Sam and Brad for a spot it will work'},
+    //{'title':'Second Round Interviews', 'description':'Roll on the ground and ask for a job trust me'}
   ];
+
+  var url = 'https://spreadsheets.google.com/feeds/list/1rUiabmgoujPc1EWCSCvGiDhk80c9Y8ykcQ57D2Z7hfI/od6/public/values?alt=json';
+
+  $http({
+    method: 'GET',
+    url: url
+  }).then(function successCallback(response) {
+    // this callback will be called asynchronously
+    // when the response is available
+  }, function errorCallback(response) {
+    // called asynchronously if an error occurs
+    // or server returns response with an error status.
+  });
+
+  $scope.getSpreadsheetData = function() {
+    $scope.webjson = $.getJSON(url, function(data){
+
+      //grab spreadsheet data from google sheet
+      $scope.spreadsheet = data;
+      var entry_array = data.feed.entry;
+
+
+      // Loop through the entries from the spreadsheet JSON
+      for (var entry in entry_array) {
+
+        // Grab elements from JSON
+        var description = entry_array[entry].gsx$description.$t;
+        var title       = entry_array[entry].gsx$title.$t;
+
+        console.log(entry_array[entry]);
+        // Push elements to JS array for angular to use
+        $scope.events.push({"title":title, "description":description});
+
+      } /* end of for loop*/
+
+
+    }) /*end of getJSON function */
+
+    console.log($scope.events);
+  }
+
 });

@@ -1,0 +1,27 @@
+{
+  "name": "vertical-timeline",
+  "version": "1.0.0",
+  "description": "Hacker Fellows vertical-timeline experiment demo",
+  "main": "js/main.js",
+  "scripts": {
+    "test": "echo \\\"Error: no test specified\\\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/wrightmhw/vertical-timeline-fork.git"
+  },
+  "author": "Michael Wright",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/wrightmhw/vertical-timeline-fork/issues"
+  },
+  "homepage": "https://github.com/wrightmhw/vertical-timeline-fork#readme",
+  "devDependencies": {
+    "bourbon": "^4.2.7",
+    "browser-sync": "^2.13.0",
+    "graceful-fs": "^4.1.4",
+    "gulp": "^3.9.1",
+    "gulp-sass": "^2.3.2",
+    "node-bourbon": "^4.2.8"
+  }
+}

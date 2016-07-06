@@ -29,8 +29,9 @@
         </div> <!-- cd-timeline-img -->
 
         <div class="cd-timeline-content">
-          <h2>{{ event.title }}</h2>
-          <p>{{ event.description }}</p>
+          <!--display the event title and description from google sheet-->
+          <h2>{{ event.title       }}</h2>
+          <p>{{  event.description }}</p>
           <a href="#0" class="cd-read-more">Read more</a>
 
 
@@ -53,7 +54,7 @@
           <!--</div> [>modal<]-->
 
 
-          <span class="cd-date">Jan 14</span>
+          <span class="cd-date">{{ event.datetime }}</span>
         </div> <!-- cd-timeline-content -->
       </div> <!-- cd-timeline-block -->
 

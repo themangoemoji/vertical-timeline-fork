@@ -68,10 +68,23 @@ app.controller('mainCtrl', function($scope, $http) {
         // Grab elements from JSON
         var description = entry_array[entry].gsx$description.$t;
         var title       = entry_array[entry].gsx$title.$t;
+        var date        = entry_array[entry].gsx$date.$t;
+        var time        = entry_array[entry].gsx$time.$t;
+
+        // Make datetime variable from concatnated date + time if time is listed
+        var datetime = date
+          if (time != "") {
+            datetime += " at " + time ;
+          }
 
         console.log(entry_array[entry]);
         // Push elements to JS array for angular to use
-        $scope.events.push({"title":title, "description":description});
+        $scope.events.push({"title":title, "description":description, "datetime":datetime});
+
+
+        $scope.render = function(time) {
+          return condition ? "This is rendered when condition == TRUE" : "This is rendered when condition == FALSE";
+        };
 
       } /* end of for loop*/
 

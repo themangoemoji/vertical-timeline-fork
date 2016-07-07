@@ -77,27 +77,26 @@ app.controller('mainCtrl', function($scope, $http) {
           }
 
         var curDate = new Date();
-        //curDate = new Date(curDate.getMonth() + " " + curDate.getDate + " " + curDate.getYear());
+        var curDateString = (curDate.getMonth()+1) + " " + curDate.getDate() + " " + curDate.getFullYear();
+        curDate = new Date(curDateString);
         var eventDate = new Date(date[0] + date[1]);
 
         console.log(entry_array[entry]);
 
         // Push elements to JS array for angular to use
-  console.log(curDate + "::::"+ eventDate);
         if (curDate <= eventDate)
         {
-
-          $scope.events.push({"title":title, "description":description, "datetime":datetime});
+          // Push elements to JS array for angular to use
+          $scope.events.push({
+            "title":title,
+            "description":description,
+            "datetime":datetime,
+            "icon":icon,
+            "dot_color":dot_color
+          });
         }
 
-        // Push elements to JS array for angular to use
-        $scope.events.push({
-          "title":title,
-          "description":description,
-          "datetime":datetime,
-          "icon":icon,
-          "dot_color":dot_color
-        });
+
 
         $scope.render = function(time) {
           return condition ? "This is rendered when condition == TRUE" : "This is rendered when condition == FALSE";

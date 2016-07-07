@@ -81,14 +81,16 @@ app.controller('mainCtrl', function($scope, $http) {
 
 
         var curDate = new Date();
+        //curDate = new Date(curDate.getMonth() + " " + curDate.getDate + " " + curDate.getYear());
         var eventDate = new Date(date[0] + date[1]);
 
         console.log(entry_array[entry]);
 
         // Push elements to JS array for angular to use
-
-        if (curDate < eventDate)
+  console.log(curDate + "::::"+ eventDate);
+        if (curDate <= eventDate)
         {
+
           $scope.events.push({"title":title, "description":description, "datetime":datetime});
         }
 
@@ -104,7 +106,6 @@ app.controller('mainCtrl', function($scope, $http) {
 
     }) /*end of getJSON function */
 
-    console.log($scope.events);
   }
 
 });

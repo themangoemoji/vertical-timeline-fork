@@ -1,9 +1,5 @@
 jQuery(document).ready(function($){
 
-
-
-
-
   var timelineBlocks = $('.cd-timeline-block'),
   offset = 0.8;
 
@@ -69,6 +65,7 @@ app.controller('mainCtrl', function($scope, $http) {
         var date        = entry_array[entry].gsx$date.$t.split(",");
         var time        = entry_array[entry].gsx$time.$t;
         var icon        = entry_array[entry].gsx$icon.$t;
+        var dot_color   = entry_array[entry].gsx$dotcolor.$t;
 
         // Replace icon spaces with underscores
         var icon        = icon.replace(/ /g,"_");
@@ -78,7 +75,6 @@ app.controller('mainCtrl', function($scope, $http) {
           if (time != "") {
             datetime += " at " + time ;
           }
-
 
         var curDate = new Date();
         //curDate = new Date(curDate.getMonth() + " " + curDate.getDate + " " + curDate.getYear());
@@ -94,8 +90,14 @@ app.controller('mainCtrl', function($scope, $http) {
           $scope.events.push({"title":title, "description":description, "datetime":datetime});
         }
 
-
-
+        // Push elements to JS array for angular to use
+        $scope.events.push({
+          "title":title,
+          "description":description,
+          "datetime":datetime,
+          "icon":icon,
+          "dot_color":dot_color
+        });
 
         $scope.render = function(time) {
           return condition ? "This is rendered when condition == TRUE" : "This is rendered when condition == FALSE";
@@ -106,6 +108,11 @@ app.controller('mainCtrl', function($scope, $http) {
 
     }) /*end of getJSON function */
 
+
+    //console.log($scope.events);
+
   }
+
+  //define dot colors
 
 });
